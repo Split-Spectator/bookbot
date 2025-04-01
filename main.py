@@ -1,10 +1,17 @@
-def main():
-    book_path = "books/frankenstein.txt"
-    text = get_text(book_path)
-    lowercase_text = make_lower_case(text)
-    result = counter(lowercase_text)
+from stats import counter
+import sys  
 
-    print("--- Begin report of books/frankenstein.txt ---")
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:    
+        book_path = sys.argv[1]
+        text = get_text(book_path)
+        lowercase_text = make_lower_case(text)
+        result = counter(lowercase_text)
+
+    print("--- Begin report of   ---")
     word_count = len(text.split())
     print(f"{word_count} words found in the document\n")
     convert(result)
@@ -12,17 +19,6 @@ def main():
     
 def make_lower_case(text):
     return text.lower() 
-   
-def counter(text):
-    counts = {}
-    for char in text:
-        if char in counts:
-            counts[char] += 1
-        else:
-            counts[char] = 1
-    return counts
-            
-
 
 def sort_on(filtered_list):
     return filtered_list["num"]
