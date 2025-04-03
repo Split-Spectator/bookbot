@@ -31,7 +31,7 @@ def convert(counts):
     
     filtered_list.sort(reverse=True, key=sort_on)
     for item in filtered_list:
-        print(f"The '{item['char']}' character was found {item['num']} times")
+        print(f"{item['char']}: {item['num']}")
     
     return filtered_list
 
